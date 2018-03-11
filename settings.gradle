@@ -4,3 +4,5 @@ rootProject.name = 'libraries-sandbox-root'
 include 'spring-cloud-config:spring-cloud-config-server'
 include 'spring-cloud-config:spring-cloud-config-client-a'
 include 'spring-cloud-config:spring-cloud-config-client-b'
+
+include 'lucene'
