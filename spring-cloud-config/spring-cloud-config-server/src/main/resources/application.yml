@@ -1,0 +1,19 @@
+spring:
+  profiles:
+    # This profile makes Config Server to work with classpath or file system files
+    # instead of VCS repositories
+    active: "native"
+  cloud:
+    config:
+      server:
+        native:
+          # Using {application} placeholder makes config files available by the following URLs:
+          #  http://localhost:8080/shared/prod
+          #  http://localhost:8080/client-a/dev
+          #  http://localhost:8080/client-b/prod
+          # So sub folders are ignored (shared, client-a, client-b)
+          #
+          # Otherwise URLs would contain "label" part:
+          #  http://localhost:8080/shared/prod/shared
+          # And clients would specify "label" property
+          searchLocations: "classpath:/config/{application}"

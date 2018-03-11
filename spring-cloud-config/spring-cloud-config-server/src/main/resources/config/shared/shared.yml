@@ -1,0 +1,6 @@
+# ---
+# Default shared properties for both clients (available for all profiles)
+# ---
+shared:
+  non-env:
+    property: "shared-default"

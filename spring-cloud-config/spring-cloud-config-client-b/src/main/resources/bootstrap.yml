@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: "client-app-b"
+  profiles:
+    # Properties for "default" profile ("client-b.yml" and "shared.yml")
+    # are also available even without specifying "default" profile explicitly
+    active: "prod"
+  cloud:
+    config:
+      # Use "shared" config name to get access to shared properties either
+      name: "client-b,shared"
+      uri: "http://localhost:8080"

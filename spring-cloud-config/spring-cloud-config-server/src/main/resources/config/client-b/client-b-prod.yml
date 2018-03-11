@@ -1,0 +1,6 @@
+# ---
+# Properties for Client B available in "prod" profile
+# ---
+client-b:
+  env:
+    property: "client-b-prod"

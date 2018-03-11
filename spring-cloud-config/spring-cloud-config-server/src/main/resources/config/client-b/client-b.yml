@@ -1,0 +1,6 @@
+# ---
+# Default properties for Client B (available for all profiles)
+# ---
+client-b:
+  non-env:
+    property: "client-b-default"

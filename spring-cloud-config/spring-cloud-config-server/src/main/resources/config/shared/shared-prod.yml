@@ -1,0 +1,6 @@
+# ---
+# Shared properties for both clients in "prod" profile
+# ---
+shared:
+  env:
+    property: "shared-prod"

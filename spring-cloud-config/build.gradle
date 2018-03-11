@@ -1,0 +1,33 @@
+buildscript {
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.10.RELEASE")
+    }
+
+}
+
+subprojects {
+
+    buildscript {
+
+        ext {
+            springBootVersion = '1.4.2.RELEASE'
+        }
+
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    apply plugin: 'org.springframework.boot'
+
+    dependencies {
+        compile("org.springframework.boot:spring-boot-starter")
+    }
+
+}

@@ -1,2 +1,6 @@
 rootProject.name = 'libraries-sandbox-root'
 
+// Spring Cloud Config setup (server and two client applications)
+include 'spring-cloud-config:spring-cloud-config-server'
+include 'spring-cloud-config:spring-cloud-config-client-a'
+include 'spring-cloud-config:spring-cloud-config-client-b'

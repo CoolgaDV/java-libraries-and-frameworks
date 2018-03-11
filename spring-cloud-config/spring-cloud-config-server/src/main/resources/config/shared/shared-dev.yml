@@ -1,0 +1,6 @@
+# ---
+# Shared properties for both clients in "dev" profile
+# ---
+shared:
+  env:
+    property: "shared-dev"
