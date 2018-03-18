@@ -1,0 +1,7 @@
+def infinispanVersion = "9.1.7.Final"
+
+dependencies {
+    compile("org.infinispan:infinispan-embedded:$infinispanVersion")
+    compile("org.infinispan:infinispan-embedded-query:$infinispanVersion")
+    compile("org.apache.lucene:lucene-queryparser:7.2.1")
+}

@@ -6,3 +6,5 @@ include 'spring-cloud-config:spring-cloud-config-client-a'
 include 'spring-cloud-config:spring-cloud-config-client-b'
 
 include 'lucene'
+
+include 'infinispan'
