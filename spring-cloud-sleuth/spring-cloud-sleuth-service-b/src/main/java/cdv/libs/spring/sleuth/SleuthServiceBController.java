@@ -1,6 +1,8 @@
 package cdv.libs.spring.sleuth;
 
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.MDC;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,22 +18,21 @@ import org.springframework.web.bind.annotation.RestController;
 public class SleuthServiceBController {
 
     @GetMapping("service/b")
-    public void call(
-            @RequestHeader("x-b3-parentspanid") String parentSpan,
-            @RequestHeader("x-b3-traceid") String traceId,
-            @RequestHeader("x-span-name") String spanName,
-            @RequestHeader("x-b3-spanid") String spanId,
-            @RequestHeader("x-b3-sampled") String samplingFlag,
-            @RequestHeader("b3") String compositeId
-    ) {
-        log.info("Service B is called:\n" +
-                "Parent span ID: {}\n" +
-                "Trace ID: {}\n" +
-                "Span name: {}\n" +
-                "Span ID: {}\n" +
-                "Sampling flag: {}\n" +
-                "Composite ID: {}\n",
-                parentSpan, traceId, spanName, spanId, samplingFlag, compositeId);
+    public void call(@RequestHeader MultiValueMap<String, String> headers) {
+
+        log.info("Service B is called:" +
+                "\nParent span ID: " + headers.get("x-b3-parentspanid") +
+                "\nTrace ID: " +       headers.get("x-b3-traceid") +
+                "\nSpan name: " +      headers.get("x-span-name") +
+                "\nSpan ID: " +        headers.get("x-b3-spanid") +
+                "\nSampling flag: " +  headers.get("x-b3-sampled") +
+                "\nComposite ID: " +   headers.get("b3"));
+
+        log.info("Mapped Diagnostic Context:" +
+                "\nParent span ID: " + MDC.get("X-B3-ParentSpanId") +
+                "\nTrace ID: " +       MDC.get("X-B3-TraceId") +
+                "\nExport flag: " +    MDC.get("X-Span-Export") +
+                "\nSpan ID: " +        MDC.get("X-B3-SpanId"));
     }
 
 }
