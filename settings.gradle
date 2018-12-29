@@ -5,6 +5,10 @@ include 'spring-cloud-config:spring-cloud-config-server'
 include 'spring-cloud-config:spring-cloud-config-client-a'
 include 'spring-cloud-config:spring-cloud-config-client-b'
 
+// Spring Cloud Sleuth setup (two services, service-a calls service-b)
+include 'spring-cloud-sleuth:spring-cloud-sleuth-service-a'
+include 'spring-cloud-sleuth:spring-cloud-sleuth-service-b'
+
 include 'lucene'
 
 include 'infinispan'

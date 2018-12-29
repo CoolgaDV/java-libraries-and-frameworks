@@ -1,0 +1,5 @@
+server:
+  port: 4545
+
+serviceB:
+  url: http://localhost:4546
