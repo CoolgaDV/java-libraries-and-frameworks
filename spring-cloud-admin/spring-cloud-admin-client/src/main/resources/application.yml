@@ -1,0 +1,14 @@
+server:
+  port: 4070
+  address: localhost
+
+spring:
+  application:
+    name: spring-cloud-admin-client
+  boot:
+    admin:
+      url: http://localhost:4060
+
+management:
+  security:
+    enabled: false
