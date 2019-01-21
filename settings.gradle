@@ -13,6 +13,8 @@ include 'spring-cloud-config:spring-cloud-config-client-b'
 include 'spring-cloud-sleuth:spring-cloud-sleuth-service-a'
 include 'spring-cloud-sleuth:spring-cloud-sleuth-service-b'
 
-include 'lucene'
-
 include 'infinispan'
+
+include 'kafka'
+
+include 'lucene'
