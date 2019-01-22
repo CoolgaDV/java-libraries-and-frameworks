@@ -1,5 +1,6 @@
-package cdv.libs.kafka.clients.producer;
+package cdv.libs.kafka.clients.consumer;
 
+import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
@@ -10,9 +11,12 @@ import java.util.Collections;
 import java.util.Properties;
 import java.util.stream.IntStream;
 
-public class KafkaConsumerApplication {
+@RequiredArgsConstructor
+public class SampleKafkaConsumer {
 
-    public static void main(String[] args) {
+    private final String topic;
+
+    public void readRecords() {
 
         Properties properties = new Properties();
         properties.put("bootstrap.servers", "localhost:9092");
@@ -26,14 +30,13 @@ public class KafkaConsumerApplication {
 
         KafkaConsumer<String, String> consumer = new KafkaConsumer<>(properties);
 
-        consumer.subscribe(Collections.singletonList("test.topic"));
+        consumer.subscribe(Collections.singletonList(topic));
 
-        IntStream.range(0, 10).forEach(index -> {
+        IntStream.range(0, 3).forEach(index -> {
 
             ConsumerRecords<String, String> records = consumer.poll(Duration.ofSeconds(5));
 
             for (ConsumerRecord<String, String> record : records)
-
                 System.out.println("offset: " + record.offset() + ", " +
                         "key: " + record.key() + ", " +
                         "value: " + record.value());
