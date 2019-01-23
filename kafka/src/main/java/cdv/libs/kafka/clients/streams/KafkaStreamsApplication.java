@@ -1,5 +1,6 @@
 package cdv.libs.kafka.clients.streams;
 
+import cdv.libs.kafka.clients.admin.SampleKafkaAdmin;
 import cdv.libs.kafka.clients.consumer.SampleKafkaConsumer;
 import cdv.libs.kafka.clients.producer.SampleKafkaProducer;
 import org.apache.kafka.common.serialization.Serdes;
@@ -19,16 +20,16 @@ public class KafkaStreamsApplication {
 
     public static void main(String[] args) throws InterruptedException {
 
+        String inputTopic = "streams.input.topic";
+        String outputTopic = "streams.output.topic";
+
+        new SampleKafkaAdmin().createTopic(inputTopic);
+
         Properties properties = new Properties();
         properties.put(APPLICATION_ID_CONFIG, "wordcount-live-test");
         properties.put(BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
         properties.put(DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass().getName());
         properties.put(DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().getClass().getName());
-
-        String inputTopic = "streams.input.topic.4";
-        String outputTopic = "streams.output.topic.4";
-
-        new SampleKafkaProducer(inputTopic, 5).writeRecords();
 
         StreamsBuilder streamsBuilder = new StreamsBuilder();
 
@@ -42,6 +43,7 @@ public class KafkaStreamsApplication {
         KafkaStreams streams = new KafkaStreams(streamsBuilder.build(), properties);
         try {
             streams.start();
+            new SampleKafkaProducer(inputTopic, 5).writeRecords();
             new SampleKafkaConsumer(outputTopic).readRecords();
         } finally {
             streams.close();
