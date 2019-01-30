@@ -16,7 +16,7 @@ public class SampleKafkaConsumer {
 
     private final String topic;
 
-    public void readRecords() {
+    public void consume() {
 
         Properties properties = new Properties();
         properties.put("bootstrap.servers", "localhost:9092");

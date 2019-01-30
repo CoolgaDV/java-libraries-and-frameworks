@@ -43,8 +43,8 @@ public class KafkaStreamsApplication {
         KafkaStreams streams = new KafkaStreams(streamsBuilder.build(), properties);
         try {
             streams.start();
-            new SampleKafkaProducer(inputTopic, 5).writeRecords();
-            new SampleKafkaConsumer(outputTopic).readRecords();
+            new SampleKafkaProducer(inputTopic, 5, 0).publish();
+            new SampleKafkaConsumer(outputTopic).consume();
         } finally {
             streams.close();
         }
