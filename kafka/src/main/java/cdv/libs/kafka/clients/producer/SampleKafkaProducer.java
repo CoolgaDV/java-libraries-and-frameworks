@@ -3,7 +3,6 @@ package cdv.libs.kafka.clients.producer;
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
-import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.KafkaException;
 import org.apache.kafka.common.serialization.StringSerializer;
@@ -12,6 +11,8 @@ import java.util.Properties;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.IntStream;
+
+import static org.apache.kafka.clients.producer.ProducerConfig.*;
 
 @RequiredArgsConstructor
 public class SampleKafkaProducer {
@@ -32,11 +33,12 @@ public class SampleKafkaProducer {
         }
     }
 
+    @SuppressWarnings("unused")
     void publishInTransaction() throws InterruptedException {
 
         Properties properties = createBasicProperties();
-        properties.put(ProducerConfig.TRANSACTIONAL_ID_CONFIG, "test.transaction");
-        properties.put(ProducerConfig.ENABLE_IDEMPOTENCE_CONFIG, true);
+        properties.put(TRANSACTIONAL_ID_CONFIG, "test.transaction");
+        properties.put(ENABLE_IDEMPOTENCE_CONFIG, true);
 
         try (Producer<String, String> producer = new KafkaProducer<>(properties)) {
             producer.initTransactions();
@@ -63,10 +65,10 @@ public class SampleKafkaProducer {
     private Properties createBasicProperties() {
 
         Properties properties = new Properties();
-        properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
-        properties.put(ProducerConfig.ACKS_CONFIG, "all");
-        properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
-        properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
+        properties.put(BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+        properties.put(ACKS_CONFIG, "all");
+        properties.put(KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
+        properties.put(VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
 
         return properties;
     }
