@@ -1,5 +1,11 @@
 rootProject.name = 'libraries-sandbox-root'
 
+include 'infinispan'
+
+include 'kafka'
+
+include 'lucene'
+
 // Spring Cloud Config setup (server and client applications)
 include 'spring-cloud-admin:spring-cloud-admin-client'
 include 'spring-cloud-admin:spring-cloud-admin-server'
@@ -13,8 +19,4 @@ include 'spring-cloud-config:spring-cloud-config-client-b'
 include 'spring-cloud-sleuth:spring-cloud-sleuth-service-a'
 include 'spring-cloud-sleuth:spring-cloud-sleuth-service-b'
 
-include 'infinispan'
-
-include 'kafka'
-
-include 'lucene'
+include 'spring-data-jpa'
