@@ -1,0 +1,13 @@
+def junitVersion = '5.4.2'
+
+test {
+    useJUnitPlatform()
+}
+
+dependencies {
+    
+    compileOnly 'org.projectlombok:lombok:1.18.4'
+
+    testImplementation "org.junit.jupiter:junit-jupiter-api:$junitVersion"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junitVersion"
+}

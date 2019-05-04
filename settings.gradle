@@ -6,6 +6,8 @@ include 'kafka'
 
 include 'lucene'
 
+include 'junit5'
+
 // Spring Cloud Config setup (server and client applications)
 include 'spring-cloud-admin:spring-cloud-admin-client'
 include 'spring-cloud-admin:spring-cloud-admin-server'
