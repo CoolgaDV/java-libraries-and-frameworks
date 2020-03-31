@@ -1,0 +1,10 @@
+spring:
+  cloud:
+    vault:
+      uri: http://localhost:8200
+      connection-timeout: 5000
+      read-timeout: 15000
+      token: s.nejIhrb6DAJfiFQMSe2TkySG
+      generic:
+        enabled: true
+        application-name: spring

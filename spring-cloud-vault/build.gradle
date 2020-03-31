@@ -1,0 +1,26 @@
+buildscript {
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.2.6.RELEASE")
+    }
+
+}
+
+repositories {
+    mavenCentral()
+}
+
+apply plugin: 'org.springframework.boot'
+
+dependencies {
+
+    compileOnly "org.projectlombok:lombok:1.18.12"
+    annotationProcessor "org.projectlombok:lombok:1.18.12"
+
+    implementation "org.springframework.boot:spring-boot-starter:2.2.6.RELEASE"
+    implementation "org.springframework.cloud:spring-cloud-starter-vault-config:2.2.2.RELEASE"
+}
