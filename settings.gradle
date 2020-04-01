@@ -21,3 +21,5 @@ include 'spring-cloud-sleuth:spring-cloud-sleuth-service-b'
 include 'spring-cloud-vault'
 
 include 'spring-data-jpa'
+
+include 'spring-prometheus'
